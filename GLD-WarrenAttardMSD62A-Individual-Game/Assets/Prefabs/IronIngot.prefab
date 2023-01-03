@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4935246648433332993}
   - component: {fileID: 8345837757767179428}
   - component: {fileID: 6068222751528822894}
-  - component: {fileID: -6885885549626934914}
-  - component: {fileID: 4201501635882230789}
   - component: {fileID: -7754310553408043902}
   m_Layer: 0
   m_Name: IronIngot
@@ -86,32 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6885885549626934914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707841941622622651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc2e858daf234451805d0b10cbf0987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8470791d6ff074a9d9424d315a0c224b, type: 2}
---- !u!114 &4201501635882230789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707841941622622651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0a598fb48884f86a5ab033fee53282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8470791d6ff074a9d9424d315a0c224b, type: 2}
 --- !u!64 &-7754310553408043902
 MeshCollider:
   m_ObjectHideFlags: 0

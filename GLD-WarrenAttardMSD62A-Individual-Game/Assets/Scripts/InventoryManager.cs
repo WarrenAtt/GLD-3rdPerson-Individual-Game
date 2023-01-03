@@ -1,127 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
-    public List<ItemScriptableObject> Items; 
+    public int maxStackedItems = 15;
+    public InventorySlot[] inventorySlots;
+    public GameObject inventoryItemPrefab;
 
-    public Transform ItemContent;
-    public GameObject inventoryItem;
-
-    public Toggle EnableRemove;
-
-    public InventoryItemController[] InventoryItems;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    int selectedSlot = -1;
 
     private void Start()
     {
-        Items = new List<ItemScriptableObject>();
+        ChangeSelectedSlot(0);
     }
 
-    public void Add(ItemScriptableObject addedItem)
+    private void Update()
     {
-        int countItems = Items.Where(x => x == addedItem).ToList().Count;
-
-        if(countItems == 0)
+        if(Input.inputString != null)
         {
-            addedItem.quantity = 1;
-            Items.Add(addedItem);
-        }
-        else
-        {
-            foreach(ItemScriptableObject item in Items)
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if(isNumber && number > 0 && number < 8)
             {
-                if(item == addedItem)
+                ChangeSelectedSlot(number - 1);
+            }
+        }
+    }
+
+    void ChangeSelectedSlot(int newValue)
+    {
+        if(selectedSlot >= 0)
+            inventorySlots[selectedSlot].Deselect();
+        inventorySlots[newValue].Select();
+        selectedSlot = newValue;
+    }
+
+    public bool AddItem(Item item)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStackedItems && itemInSlot.item.stackable == true)
+            {
+                itemInSlot.count++;
+                itemInSlot.RefreshCount();
+                return true;
+            }
+        }
+
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if(itemInSlot == null)
+            {
+                SpawnNewItem(item, slot);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void SpawnNewItem(Item item, InventorySlot slot)
+    {
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.InitialiseItem(item);
+    }
+
+    public Item GetSelectedItem(bool use)
+    {
+        InventorySlot slot = inventorySlots[selectedSlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+        if (itemInSlot != null)
+        {
+            Item item =  itemInSlot.item;
+
+            if(use == true)
+            {
+                itemInSlot.count--;
+                if(itemInSlot.count <= 0)
                 {
-                    item.quantity += 1;
+                    Destroy(itemInSlot.gameObject);
+                }
+                else
+                {
+                    itemInSlot.RefreshCount();
                 }
             }
         }
-    }
 
-    public void Remove(ItemScriptableObject item)
-    {
-        foreach (ItemScriptableObject obj in Items)
-        {
-            print(item);
-            if (obj == item)
-            {
-                if (Items.Count != 0)
-                {
-                    obj.quantity -= 1;
-
-                    if (obj.quantity == 0)
-                    {
-                        Items.Remove(obj);
-                    }
-                }
-            }
-        }
-    }
-
-    public void ListItems()
-    {
-        foreach (Transform item in ItemContent)
-        {
-            
-            DestroyImmediate(item.gameObject);
-        }
-
-        foreach (var item in Items)
-        {
-            GameObject obj = Instantiate(inventoryItem, ItemContent);
-
-            var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            var itemQuantity = obj.transform.Find("ItemQuantity").GetComponent<TextMeshProUGUI>();
-            var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
-
-            itemName.text = item.name;
-            itemIcon.sprite = item.icon;
-            itemQuantity.text = "x" + item.quantity.ToString();
-
-            if (EnableRemove.isOn)
-                removeButton.gameObject.SetActive(true);
-        }
-
-        SetIventoryItems();
-    }
-
-    public void EnableItemsRemove()
-    {
-        if (EnableRemove.isOn)
-        {
-            foreach(Transform item in ItemContent)
-            {
-                item.Find("RemoveButton").gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            foreach (Transform item in ItemContent)
-            {
-                item.Find("RemoveButton").gameObject.SetActive(false);
-            }
-        }
-    }
-
-    public void SetIventoryItems()
-    {
-        InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
-
-        print(Items.Count);
-        for (int i = 0; i < Items.Count; i++)
-        {
-            InventoryItems[i].AddItem(Items[i]);
-        }
+        return null;
     }
 }

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8096757366853523875}
   - component: {fileID: 5184397953587729926}
   - component: {fileID: 6923819546663658188}
-  - component: {fileID: -7565355071281127992}
-  - component: {fileID: 2075547368085806866}
   - component: {fileID: 3177277860804375142}
   m_Layer: 0
   m_Name: WoodenLog
@@ -86,32 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-7565355071281127992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8869458217451946777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc2e858daf234451805d0b10cbf0987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 02873c725e95c47cabd74d7a84d17ec8, type: 2}
---- !u!114 &2075547368085806866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8869458217451946777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0a598fb48884f86a5ab033fee53282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 02873c725e95c47cabd74d7a84d17ec8, type: 2}
 --- !u!64 &3177277860804375142
 MeshCollider:
   m_ObjectHideFlags: 0
