@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8345837757767179428}
   - component: {fileID: 6068222751528822894}
   - component: {fileID: -7754310553408043902}
+  - component: {fileID: -9071804353251369951}
   m_Layer: 0
   m_Name: IronIngot
   m_TagString: Untagged
@@ -98,3 +99,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6542436245598853607, guid: 0099e6d3a1e4543b797ddf0a47978712, type: 3}
+--- !u!114 &-9071804353251369951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707841941622622651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93000382fadd4b56b8aa07896108872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 36c272de2c17547b1b07780b4263f3cb, type: 2}
+  inventoryManager: {fileID: 6391971071222440507, guid: cf719b415fabe4b1492f8c1dc7b906ca, type: 3}

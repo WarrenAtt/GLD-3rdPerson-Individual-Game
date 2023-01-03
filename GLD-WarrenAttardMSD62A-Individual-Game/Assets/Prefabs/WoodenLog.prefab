@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5184397953587729926}
   - component: {fileID: 6923819546663658188}
   - component: {fileID: 3177277860804375142}
+  - component: {fileID: -6743764941683682354}
   m_Layer: 0
   m_Name: WoodenLog
   m_TagString: Untagged
@@ -98,3 +99,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5260768145473467013, guid: 6df44e0d7fe2e0a4e9aafa01859cf7c8, type: 3}
+--- !u!114 &-6743764941683682354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869458217451946777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93000382fadd4b56b8aa07896108872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 6a31b195d7175479980633faf616f789, type: 2}
+  inventoryManager: {fileID: 6391971071222440507, guid: cf719b415fabe4b1492f8c1dc7b906ca, type: 3}
