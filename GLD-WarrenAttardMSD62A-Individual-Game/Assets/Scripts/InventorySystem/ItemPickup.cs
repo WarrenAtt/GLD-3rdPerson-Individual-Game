@@ -9,16 +9,19 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         bool result = InventoryManager.inventoryManager.AddItem(item);
+
         if (result == true)
         {
             Debug.Log("Item Added");
+            ItemRandomSpawner.itemRandomSpawner.currentItemsCount--;
+            Destroy(gameObject);
         }
         else
         {
             Debug.Log("Item not Added!");
         }
 
-        Destroy(gameObject);
+        
     }
 
     private void OnMouseDown()
