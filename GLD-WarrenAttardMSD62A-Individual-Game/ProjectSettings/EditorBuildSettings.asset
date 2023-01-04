@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Medieval Kingdom.unity
+    guid: c7214231c137bfb46bb461c5c95ec794
   m_configObjects: {}

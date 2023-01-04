@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b98b80c7ff4d4b94991b81a60a2f0cb, type: 3}
+  m_Name: GateKeeper
+  m_EditorClassIdentifier: 
+  name: Gate Keeper
+  dialogue:
+  - Can I help you with something?
+  - You can collect items found in the area in front of me. You can either sell them
+    or craft other items which can be sold at a higher price.
+  - Pleasure making business with you. You now have access to the main city.
+  - You do not have enough money. Return once you have $15000.
+  - Talk to you later.
+  playerDialogue:
+  - How can I make money?
+  - Open the Gate. ($15,000)
+  - Goodbye..

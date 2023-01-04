@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     {
         MoneyText.text = "Money: $ " + GameData.Money.ToString();
 
-
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SellItem();
