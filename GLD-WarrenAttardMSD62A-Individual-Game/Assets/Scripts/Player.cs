@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     {
         if(MoneyText == null)
             MoneyText = GameObject.Find("TotalMoney").GetComponent<Text>();
+
+        this.transform.position = new Vector3(-19.8863125f, 1.565609872f, -4.18821764f);
     }
 
     // Update is called once per frame
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
         {
             SellItem();
         }
+
+        GameData.PlayerPos = transform.position;
     }
 
     private bool SellItem()
@@ -32,6 +36,15 @@ public class Player : MonoBehaviour
         if (recievedItem != null)
         {
             Debug.Log("Item: " + recievedItem.name + " sold!");
+
+            foreach(Item item in InventoryManager.inventoryManager.itemsAvailable)
+            {
+                if(item == recievedItem)
+                {
+                    item.quantity--;
+                }
+            }
+
             GameData.Money += recievedItem.sellValue;
         }
         else

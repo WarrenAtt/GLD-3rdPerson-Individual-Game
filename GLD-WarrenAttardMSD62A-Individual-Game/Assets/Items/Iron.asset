@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db5d8d2c3daf4d8696be20bf8b91543, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
+  name: Iron
   image: {fileID: 21300000, guid: b48052bf64afc4610bb1562b4f2e0c5b, type: 3}
   type: 1
   stackable: 1
   sellValue: 300
+  quantity: 1

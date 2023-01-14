@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     [Header("Settings")]
     public int maxStackedItems = 15;
     public List<Item> itemsAvailable = new List<Item>();
-    public List<Item> Items;
+    public List<Item> Items = new List<Item>();
 
     [Header("UI")]
     public InventorySlot[] inventorySlots;
@@ -54,6 +54,9 @@ public class InventoryManager : MonoBehaviour
             {
                 itemInSlot.count++;
                 itemInSlot.RefreshCount();
+
+                GameData.PlayerInvetory = GetItemsInInventory();
+                AddItemQuantity(item);
                 return true;
             }
         }
@@ -63,10 +66,12 @@ public class InventoryManager : MonoBehaviour
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-            if(itemInSlot == null)
+            if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
-                GetItemsInInventory();
+                GameData.PlayerInvetory = GetItemsInInventory();
+                item.quantity = 0;
+                AddItemQuantity(item);
                 return true;
             }
         }
@@ -136,22 +141,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private InventoryItem GetItemInInventory(ItemType itemType)
-    {
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            InventorySlot slot = inventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-
-            if (itemInSlot != null && itemInSlot.item.type == itemType)
-            {
-                return itemInSlot;
-            }
-        }
-
-        return null;
-    }
-
     private void ReduceItem(ItemType itemType, int amount)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -177,10 +166,24 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private InventoryItem GetItemInInventory(ItemType itemType)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && itemInSlot.item.type == itemType)
+            {
+                return itemInSlot;
+            }
+        }
+
+        return null;
+    }
+
     private List<Item> GetItemsInInventory()
     {
-        Items = new List<Item>();
-
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventorySlot slot = inventorySlots[i];
@@ -188,13 +191,26 @@ public class InventoryManager : MonoBehaviour
 
             if (itemInSlot != null && !Items.Contains(itemInSlot.item))
             {
+                print("test");
                 Items.Add(itemInSlot.item);
-
-                return Items;
             }
         }
 
-        return null;
+        return Items;
+    }
+
+    private void AddItemQuantity(Item item)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && item == itemInSlot.item)
+            {
+                item.quantity++;
+            }
+        }
     }
 
     private void ChangeSelectedSlot(int newValue)

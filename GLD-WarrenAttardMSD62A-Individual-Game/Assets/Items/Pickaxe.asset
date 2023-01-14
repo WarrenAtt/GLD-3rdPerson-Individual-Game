@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db5d8d2c3daf4d8696be20bf8b91543, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
+  name: Pickaxe
   image: {fileID: 21300000, guid: 0f3107e32b52b44388afff96bd7edb6b, type: 3}
   type: 2
   stackable: 0
   sellValue: 1500
+  quantity: 0

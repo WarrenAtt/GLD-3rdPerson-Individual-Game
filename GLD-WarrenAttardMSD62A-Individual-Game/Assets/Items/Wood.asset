@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db5d8d2c3daf4d8696be20bf8b91543, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
+  name: Wood
   image: {fileID: 21300000, guid: 5df58cf8b0bfa4f149a6408cff8b3651, type: 3}
   type: 0
   stackable: 1
   sellValue: 150
+  quantity: 1

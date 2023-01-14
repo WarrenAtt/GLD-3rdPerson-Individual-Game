@@ -21,7 +21,7 @@ public class ItemRandomSpawner : MonoBehaviour
         if(currentItemsCount < maxItemsToSpawn)
         {
             Vector3 randomSpawnPosition = new Vector3(Random.Range(-37, -10), 1, Random.Range(-18, 8)); ;
-            GameObject itemSpawned = Instantiate(itemsToSpawn[Random.Range(0, itemsToSpawn.Count)], randomSpawnPosition, Quaternion.Euler(-90, 0, 0));
+            Instantiate(itemsToSpawn[Random.Range(0, itemsToSpawn.Count)], randomSpawnPosition, Quaternion.Euler(-90, 0, 0));
             currentItemsCount++;
         }
     }

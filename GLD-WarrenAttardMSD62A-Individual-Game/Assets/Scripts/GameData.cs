@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public static class GameData
 {
     private static int _money;
@@ -30,5 +33,21 @@ public static class GameData
     {
         set { _accessToCity = value; }
         get { return _accessToCity; }
+    }
+
+    private static Vector3 _playerPos;
+
+    public static Vector3 PlayerPos
+    {
+        set { _playerPos = value; }
+        get { return _playerPos; }
+    }
+
+    private static List<Item> _playerInventory;
+
+    public static List<Item> PlayerInvetory
+    {
+        set { _playerInventory = value; }
+        get { return _playerInventory; }
     }
 }
